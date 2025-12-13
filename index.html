@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" view="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Align UI | Examples</title>
+
+    <link rel="stylesheet" href="./src/main.css">
+
+    <style>
+        header {
+            padding: 50px max(50px, calc((100vw - 1100px) / 2));
+            display: flex;
+            align-items: center;
+
+            h1 {
+                color: var(--color-gray-000);
+                font-size: 3.5em;
+                padding-inline: .3em;
+                background-color: var(--color-blue);
+            }
+
+            button {
+                margin-left: auto;
+            }
+        }
+
+        menu {
+            padding: 50px max(50px, calc((100vw - 1100px) / 2));
+        }
+
+        body>h1 {
+            color: var(--color-blue);
+            padding: 0 0 10px max(50px, calc((100vw - 1100px) / 2));
+            margin-top: 50px;
+        }
+
+        section {
+            padding-inline: max(50px, calc((100vw - 900px) / 2));
+            padding-bottom: 80px;
+            border-top: var(--border-light);
+
+            >h2:first-child {
+                color: var(--color-blue);
+                margin-top: 30px;
+            }
+        }
+
+        .code-label {
+            cursor: copy;
+            display: block;
+            color: var(--color-gray-030);
+            font-family: 'Courier New', Courier, monospace;
+            margin-block: 20px 5px;
+
+            &::after {
+                color: var(--color-gray-000);
+                content: '\f328';
+                display: none;
+                padding: .2em .5em;
+                position: absolute;
+                font-size: .8em;
+                margin-left: .5em;
+                font-family: "Font Awesome 6 Free";
+                border-radius: .3em;
+                background-color: var(--color-gray-100);
+            }
+
+            &:hover::after {
+                display: inline;
+            }
+
+            &.copy-success::after {
+                display: inline;
+                content: 'Copied!';
+                font-family: unset;
+            }
+        }
+
+        .color-block {
+            width: 3em;
+            height: 3em;
+            cursor: copy;
+            margin: 20px 5px 5px 0;
+            display: inline-flex;
+            position: relative;
+            border-radius: var(--border-radius-light);
+            justify-content: center;
+
+            &::after {
+                color: var(--color-gray-000);
+                content: '\f328';
+                display: none;
+                padding: .2em .5em;
+                bottom: -1.7em;
+                position: absolute;
+                font-size: .8em;
+                font-family: "Font Awesome 6 Free";
+                border-radius: .3em;
+                background-color: var(--color-gray-100);
+            }
+
+            &:hover::after {
+                display: block;
+            }
+
+            &.copy-success::after {
+                display: block;
+                content: 'Copied!';
+                font-family: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <header>
+        <h1>Align UI Examples</h1>
+        <button id="darkmode" class="btn btn--primary btn--icon">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </header>
+
+    <menu>
+        <p>A demonstration of the core styles defined in my personal library.</p>
+        <!-- <li>Typography</li>
+        <li>Buttons</li>
+        <li>Form Elements
+            <ul>
+                <li>Inputs</li>
+                <li>Further Inputs</li>
+            </ul>
+        </li> -->
+    </menu>
+
+    <h1>Colors</h1>
+    <section>
+        <span class="color-block" color="--color-blue"></span>
+        <span class="color-block" color="--color-red"></span>
+        <span class="color-block" color="--color-green"></span>
+
+        <br>
+        <span class="color-block" color="--color-gray-000" style="border: var(--border-light);"></span>
+        <span class="color-block" color="--color-gray-005"></span>
+        <span class="color-block" color="--color-gray-010"></span>
+        <span class="color-block" color="--color-gray-020"></span>
+        <span class="color-block" color="--color-gray-030"></span>
+        <span class="color-block" color="--color-gray-040"></span>
+        <span class="color-block" color="--color-gray-050"></span>
+        <span class="color-block" color="--color-gray-060"></span>
+        <span class="color-block" color="--color-gray-070"></span>
+        <span class="color-block" color="--color-gray-080"></span>
+        <span class="color-block" color="--color-gray-090"></span>
+        <span class="color-block" color="--color-gray-100"></span>
+    </section>
+
+    <h1>Typography</h1>
+    <section>
+        <h1 autolabel>Heading 1</h1>
+
+        <h2 autolabel>Heading 2</h2>
+
+        <h3 autolabel>Heading 3</h3>
+
+        <p autolabel>Some Text</p>
+
+        <a autolabel>Link</a>
+
+        <a autolabel>
+            Link
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+    </section>
+
+
+    <h1>Buttons</h1>
+    <section>
+        <button autolabel class="btn">Default</button>
+
+        <button autolabel class="btn btn--primary">Primary</button>
+
+        <button autolabel class="btn btn--ghost">Ghost</button>
+
+        <button autolabel class="btn">
+            <i class="fa-solid fa-check"></i>
+            Default
+        </button>
+        <button class="btn btn--primary">
+            <i class="fa-regular fa-star"></i>
+            Primary
+        </button>
+        <button class="btn btn--ghost">
+            <i class="fa-solid fa-ghost"></i>
+            Ghost
+        </button>
+
+        <button autolabel class="btn btn--icon">
+            <i class="fa-solid fa-check"></i>
+        </button>
+        <button class="btn btn--icon btn--primary">
+            <i class="fa-regular fa-star"></i>
+        </button>
+        <button class="btn btn--icon btn--ghost">
+            <i class="fa-solid fa-ghost"></i>
+        </button>
+
+        <button autolabel class="btn" disabled>Default</button>
+        <button class="btn btn--primary" disabled>Primary</button>
+        <button class="btn btn--ghost" disabled>Ghost</button>
+    </section>
+
+
+    <h1>Form Elements</h1>
+    <section>
+        <h2>Basic</h2>
+
+        <input autolabel placeholder="Default...">
+
+        <input autolabel class="input--ghost" placeholder="Ghost...">
+
+        <input autolabel placeholder="Required..." required>
+
+        <input autolabel placeholder="Disabled..." disabled>
+    </section>
+
+    <section>
+        <h2>Labeled Inputs</h2>
+
+        <labeled-input autolabel>
+            <input placeholder=' ' required>
+            <label>Labeled Input</label>
+        </labeled-input>
+
+        <labeled-input autolabel>
+            <input type="password" placeholder=' ' required>
+            <label>With Button</label>
+            <button class="btn btn--icon btn--ghost">
+                <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+        </labeled-input>
+    </section>
+
+    <section>
+        <h2>Time Inputs</h2>
+
+        <input type="date" autolabel>
+
+        <input type="datetime-local" autolabel>
+
+        <input type="time" autolabel>
+
+        <input type="month" autolabel>
+
+        <input type="week" autolabel>
+    </section>
+
+    <section>
+        <h2>Text Based Inputs</h2>
+
+        <input type="url" autolabel>
+
+        <input type="email" autolabel>
+
+        <input type="number" autolabel>
+
+        <input type="search" autolabel>
+
+        <input type="tel" autolabel>
+    </section>
+
+    <section>
+        <h2>Further Inputs</h2>
+
+        <input type="color" value="#FF0000" autolabel>
+
+        <input type="image" autolabel>
+
+        <input type="file" autolabel>
+
+        <input type="range" autolabel>
+    </section>
+
+    <section>
+        <h2>Checkboxes</h2>
+
+        <label class="checkbox" autolabel>
+            <input type="checkbox" checked>
+            <span></span>
+            Checkbox 1
+        </label>
+        <label class="checkbox">
+            <input type="checkbox">
+            <span></span>
+            Checkbox 2
+        </label>
+
+        <label class="radio" autolabel>
+            <input type="radio" name="radio1" checked>
+            <span></span>
+            Radio 1
+        </label>
+        <label class="radio">
+            <input type="radio" name="radio1">
+            <span></span>
+            Radio 2
+        </label>
+        <label class="radio">
+            <input type="radio" name="radio1">
+            <span></span>
+            Radio 3
+        </label>
+    </section>
+
+    <section>
+        <h2>Select</h2>
+
+        <select autolabel>
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+        </select>
+    </section>
+
+    <section>
+        <h2>Textarea</h2>
+
+        <textarea autolabel rows="3">Default...</textarea>
+    </section>
+
+
+
+    <script>
+        // document.querySelectorAll('label.code-label[for]').forEach(label => {
+        //     const elementId = label.getAttribute('for');
+        //     const clonedElement = document.getElementById(elementId).cloneNode(true);
+        //     clonedElement.removeAttribute('id');
+        //     const textContent = clonedElement.hasAttribute('class') ? clonedElement.classList : clonedElement.outerHTML;
+        //     label.textContent = textContent;
+        //     label.addEventListener('click', e => {
+        //         navigator.clipboard.writeText(textContent).then(() => {
+        //             label.classList.add('copy-success');
+        //             setTimeout(() => label.classList.remove('copy-success'), 1500);
+        //         })
+        //     });
+        // });
+
+        document.querySelectorAll('.color-block').forEach(colorBlock => {
+            const color = colorBlock.getAttribute('color');
+            colorBlock.style.backgroundColor = `var(${color})`;
+            colorBlock.addEventListener('click', e => {
+                navigator.clipboard.writeText(color).then(() => {
+                    colorBlock.classList.add('copy-success');
+                    setTimeout(() => colorBlock.classList.remove('copy-success'), 1500);
+                })
+            });
+        });
+
+
+        document.querySelectorAll('[autolabel]').forEach(element => {
+            // const id = Math.random().toString(36).substring(2, 9);
+
+            const clonedElement = element.cloneNode(true);
+            clonedElement.removeAttribute('autolabel');
+            const textContent = clonedElement.hasAttribute('class') ? clonedElement.classList : clonedElement.outerHTML;
+            // element.id = id;
+
+            const label = document.createElement('label');
+            label.textContent = textContent;
+            // label.setAttribute('for', id);
+            label.classList.add('code-label');
+            label.addEventListener('click', e => {
+                navigator.clipboard.writeText(textContent).then(() => {
+                    label.classList.add('copy-success');
+                    setTimeout(() => label.classList.remove('copy-success'), 1500);
+                })
+            });
+
+            element.before(label);
+        });
+
+
+        document.querySelector('#darkmode').addEventListener('click', e => {
+            if (document.documentElement.getAttribute('view') === 'dark') {
+                e.currentTarget.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                document.documentElement.setAttribute('view', 'light');
+            } else {
+                e.currentTarget.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                document.documentElement.setAttribute('view', 'dark');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
