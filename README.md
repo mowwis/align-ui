@@ -13,7 +13,7 @@ The goal of Align is to provide a standardized set of reusable components and st
 ```
 
 # Examples
-See [https://mowwis.github.io/align-ui/](this) for examples.
+See [this](https://mowwis.github.io/align-ui/) for examples.
 
 
 # Contributing & License
