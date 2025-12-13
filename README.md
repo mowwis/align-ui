@@ -12,6 +12,9 @@ The goal of Align is to provide a standardized set of reusable components and st
 <link rel="stylesheet" href="https://github.com/mowwis/align-ui/releases/download/v1.0.0/align.min.css">
 ```
 
+# Examples
+See [https://mowwis.github.io/align-ui/](this) for examples.
+
 
 # Contributing & License
 This is a personal library and is not open for external contributions.
