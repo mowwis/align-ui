@@ -1,0 +1,38 @@
+@import 'base/reset.css';
+@import 'base/variables.css';
+@import 'base/typography.css';
+
+@import 'components/form.css';
+@import 'components/button.css';
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background-color: var(--color-gray-000);
+
+    interpolate-size: allow-keywords;
+}
+
+
+hr {
+    border: none;
+    border-top: var(--border-light);
+}
+
+
+/* 
+
+TO ADD:
+
+.text-overflow-ellipsis
+
+image styling
+
+toggle switches?
+
+custom scrollbar
+
+progress 
+
+*/

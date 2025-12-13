@@ -1,0 +1,72 @@
+:host,
+:root {
+    --color-red: #b3261e;
+    --color-blue: #4f80ff;
+    --color-green: #00ff00;
+
+    --color-gray-000: hsl(0, 0%, 100%);
+    --color-gray-005: hsl(0, 0%, 95%);
+    --color-gray-010: hsl(0, 0%, 90%);
+    --color-gray-020: hsl(0, 0%, 80%);
+    --color-gray-030: hsl(0, 0%, 70%);
+    --color-gray-040: hsl(0, 0%, 60%);
+    --color-gray-050: hsl(0, 0%, 50%);
+    --color-gray-060: hsl(0, 0%, 40%);
+    --color-gray-070: hsl(0, 0%, 30%);
+    --color-gray-080: hsl(0, 0%, 20%);
+    --color-gray-090: hsl(0, 0%, 10%);
+    --color-gray-100: hsl(0, 0%, 0%);
+
+
+    --border-light: 1px solid var(--color-gray-040);
+    --shadow-light: 0px 2px 5px 0px rgba(0, 0, 0, 0.41);
+    /* --shadow-medium: */
+
+    --border-radius-light: .3em;
+    --border-radius-medium: 1em;
+    --border-radius-strong: 100vw;
+    --border-radius-circle: 50%;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    [view='auto'],
+    [view='auto']:root {
+        --color-red: #eea19c;
+
+        --color-gray-000: hsl(0, 0%, 0%);
+        --color-gray-005: hsl(0, 0%, 20%);
+        --color-gray-010: hsl(0, 0%, 20%);
+        --color-gray-020: hsl(0, 0%, 40%);
+        --color-gray-030: hsl(0, 0%, 70%);
+        --color-gray-040: hsl(0, 0%, 70%);
+        --color-gray-050: hsl(0, 0%, 70%);
+        --color-gray-060: hsl(0, 0%, 70%);
+        --color-gray-070: hsl(0, 0%, 80%);
+        --color-gray-080: hsl(0, 0%, 90%);
+        --color-gray-090: hsl(0, 0%, 95%);
+        --color-gray-100: hsl(0, 0%, 100%);
+
+        color-scheme: dark;
+    }
+}
+
+[view='dark'],
+[view='dark']:root {
+    --color-red: #eea19c;
+
+    --color-gray-000: hsl(0, 0%, 0%);
+    --color-gray-005: hsl(0, 0%, 20%);
+    --color-gray-010: hsl(0, 0%, 20%);
+    --color-gray-020: hsl(0, 0%, 40%);
+    --color-gray-030: hsl(0, 0%, 70%);
+    --color-gray-040: hsl(0, 0%, 70%);
+    --color-gray-050: hsl(0, 0%, 70%);
+    --color-gray-060: hsl(0, 0%, 70%);
+    --color-gray-070: hsl(0, 0%, 80%);
+    --color-gray-080: hsl(0, 0%, 90%);
+    --color-gray-090: hsl(0, 0%, 95%);
+    --color-gray-100: hsl(0, 0%, 100%);
+
+    color-scheme: dark;
+}

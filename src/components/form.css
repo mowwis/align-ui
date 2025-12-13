@@ -1,0 +1,201 @@
+@media (prefers-color-scheme: dark) {
+    [view='auto'] :where(input, textarea) {
+        background-color: var(--color-gray-010);
+    }
+}
+
+[view='dark'] :where(input, textarea) {
+    background-color: var(--color-gray-010);
+}
+
+
+
+label {
+    color: var(--color-gray-060);
+}
+
+select,
+textarea,
+input:not(:where([type="color"], [type="image"], [type="file"], [type="range"], [type="checkbox"], [type="radio"], [type="hidden"])) {
+    display: block;
+    padding: .5em .5em .5em 1.25em;
+    width: min(100%, 300px);
+
+    color: var(--color-gray-100);
+    border: var(--border-light);
+    border-radius: var(--border-radius-light);
+    background-color: var(--color-gray-000);
+
+    font-size: 1rem;
+
+    &:is(:hover, :focus-within):not(:disabled) {
+        border-color: var(--color-gray-100);
+    }
+
+    &:focus-within {
+        box-shadow: inset 0 0 0 1px var(--color-gray-100);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
+input {
+    outline: none;
+    font-weight: 500;
+
+    &::placeholder {
+        color: var(--color-gray-060);
+        font-weight: normal;
+    }
+
+    &:user-invalid:is(:hover, :not(:hover)) {
+        border-color: var(--color-red);
+        box-shadow: inset 0 0 0 1px var(--color-red);
+    }
+}
+
+
+:is(.input--ghost, input[type="color"]):focus-visible {
+    outline-offset: 2px;
+    outline: 2px solid var(--color-blue);
+}
+
+
+.input--ghost,
+.input--ghost:is(:hover, :focus-within) {
+    border: none;
+    padding: .5em;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+input[type="password"] {
+    line-height: 19px;
+    font-family: 'pass', caption, Helvetica, Arial, sans-serif;
+}
+
+input[type="color"] {
+    width: 2.5em;
+    height: 2.5em;
+    border: none;
+    border-radius: var(--border-radius-light);
+}
+
+::-webkit-color-swatch,
+::-webkit-color-swatch-wrapper {
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+::-moz-focus-inner,
+::-moz-color-swatch {
+    border: 0;
+    padding: 0;
+}
+
+labeled-input {
+    display: flex;
+    position: relative;
+    max-width: 300px;
+    align-items: center;
+
+    input {
+        width: 100%;
+        padding-top: 1.3em;
+    }
+
+    &:has(button) input {
+        padding-right: 3.5em;
+    }
+
+    &:has(input:is(:focus, :not(:placeholder-shown))) label {
+        transform: translateY(-50%) scale(0.75);
+    }
+
+    &:has(input:is(:focus, :not(:placeholder-shown)):user-invalid) label {
+        color: var(--color-red);
+    }
+
+    label {
+        left: 1.25em;
+        position: absolute;
+        pointer-events: none;
+        transform-origin: 0 50%;
+        transition: top .15s cubic-bezier(.4, 0, .2, 1), transform .15s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    button {
+        right: .5em;
+        position: absolute;
+    }
+}
+
+.radio,
+.checkbox {
+    gap: .5em;
+    cursor: pointer;
+    display: inline-flex;
+    position: relative;
+    user-select: none;
+    align-items: center;
+    padding-right: .5em;
+
+    input {
+        opacity: 0;
+        z-index: -1;
+        position: absolute;
+    }
+
+    &:has(input:focus-visible) span {
+        outline-offset: 2px;
+        outline: 2px solid var(--color-blue);
+    }
+
+    &:hover span:after {
+        width: 1.5rem;
+        height: 1.5rem;
+        content: '';
+        z-index: -1;
+        position: absolute;
+        border-radius: 50%;
+        background-color: var(--color-gray-005);
+    }
+
+    span {
+        color: var(--color-gray-100);
+        display: flex;
+        position: relative;
+        align-items: center;
+        font-family: "Font Awesome 6 Free";
+        border-radius: var(--border-radius-light);
+        justify-content: center;
+    }
+}
+
+.radio span::before {
+    content: "\f111";
+    font-style: normal;
+}
+
+.radio:has(input:checked) span::before {
+    content: "\f111";
+    font-weight: 900;
+}
+
+.checkbox span::before {
+    content: "\f0c8";
+    font-style: normal;
+}
+
+.checkbox:has(input:checked) span::before {
+    content: "\f14a";
+    font-weight: 900;
+}
+
+
+textarea {
+    resize: none;
+}
