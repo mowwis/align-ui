@@ -9,41 +9,76 @@
     <link rel="stylesheet" href="./src/main.css">
 
     <style>
-        header {
-            padding: 50px max(50px, calc((100vw - 1100px) / 2));
-            display: flex;
-            align-items: center;
+        body>h1 {
+            width: fit-content;
+            color: #fff;
+            font-size: 3.5em;
+            margin-bottom: var(--space-2);
+            padding-inline: var(--space-1);
+            background-color: var(--color-primary);
+        }
 
-            h1 {
-                color: var(--color-gray-000);
-                font-size: 3.5em;
-                padding-inline: .3em;
-                background-color: var(--color-blue);
+        ::highlight(search-results) {
+            background-color: yellow;
+            color: black;
+        }
+
+        header {
+            top: 0;
+            gap: var(--space-8);
+            z-index: 99;
+            display: flex;
+            position: sticky;
+            align-items: center;
+            margin-block: 50px;
+            padding-block: 20px;
+            background-color: var(--color-gray-000);
+
+            input-group {
+                min-width: 50%;
             }
 
-            button {
+            div {
                 margin-left: auto;
             }
         }
 
-        menu {
-            padding: 50px max(50px, calc((100vw - 1100px) / 2));
+        body {
+            padding: 8em clamp(var(--space-2), 50%, var(--space-4));
+            max-width: 1100px;
+            overflow-y: scroll;
+            margin-inline: auto;
         }
 
-        body>h1 {
-            color: var(--color-blue);
-            padding: 0 0 10px max(50px, calc((100vw - 1100px) / 2));
-            margin-top: 50px;
-        }
+        details {
+            border-bottom: var(--border-light);
 
-        section {
-            padding-inline: max(50px, calc((100vw - 900px) / 2));
-            padding-bottom: 80px;
-            border-top: var(--border-light);
+            &::details-content {
+                padding-inline: 4em var(--space-4);
+            }
 
-            >h2:first-child {
-                color: var(--color-blue);
-                margin-top: 30px;
+            >summary {
+                top: 80px;
+                gap: var(--space-3);
+                z-index: 10;
+                display: flex;
+                position: sticky;
+                align-items: center;
+                padding-block: var(--space-2);
+                background-color: var(--color-gray-000);
+            }
+
+            details summary {
+                top: 125px;
+                z-index: 9;
+            }
+
+            &[open]::details-content {
+                padding-bottom: 80px;
+            }
+
+            &[open]>summary {
+                color: var(--color-primary);
             }
         }
 
@@ -58,12 +93,12 @@
                 color: var(--color-gray-000);
                 content: '\f328';
                 display: none;
-                padding: .2em .5em;
+                padding: var(--space-1) var(--space-2);
                 position: absolute;
-                font-size: .8em;
-                margin-left: .5em;
+                font-size: var(--fs-100);
+                margin-left: var(--space-2);
                 font-family: "Font Awesome 6 Free";
-                border-radius: .3em;
+                border-radius: var(--radius-sm);
                 background-color: var(--color-gray-100);
             }
 
@@ -82,22 +117,24 @@
             width: 3em;
             height: 3em;
             cursor: copy;
-            margin: 20px 5px 5px 0;
+            margin: var(--space-1);
             display: inline-flex;
             position: relative;
-            border-radius: var(--border-radius-light);
+            margin-left: 0;
+            border-radius: var(--radius-sm);
             justify-content: center;
 
             &::after {
                 color: var(--color-gray-000);
-                content: '\f328';
+                bottom: -1.75em;
+                z-index: 1;
                 display: none;
-                padding: .2em .5em;
-                bottom: -1.7em;
+                content: '\f328';
+                padding: var(--space-1) var(--space-2);
                 position: absolute;
-                font-size: .8em;
+                font-size: var(--fs-100);
                 font-family: "Font Awesome 6 Free";
-                border-radius: .3em;
+                border-radius: var(--radius-sm);
                 background-color: var(--color-gray-100);
             }
 
@@ -116,33 +153,54 @@
 
 <body>
 
+    <h1>Align UI Examples</h1>
+    <p>A demonstration of the core styles defined in my personal library.</p>
 
     <header>
-        <h1>Align UI Examples</h1>
-        <button id="darkmode" class="btn btn--primary btn--icon">
-            <i class="fa-solid fa-moon"></i>
-        </button>
+        <input-group class="ingroup--rounded">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="search" type="search" placeholder="Search styles...">
+            <button class="btn btn--icon btn--ghost">
+                <i class="fa-solid fa-filter"></i>
+            </button>
+        </input-group>
+
+        <div>
+            <button id="collapse" class="btn btn--icon" title="Collapse All">
+                <i class="fa-solid fa-angle-up"></i>
+            </button>
+            <button id="expand" class="btn btn--icon" title="Expand All">
+                <i class="fa-solid fa-angle-down"></i>
+            </button>
+
+            <button id="darkmode" class="btn btn--primary btn--icon" title="Switch to Darkmode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
     </header>
 
-    <menu>
-        <p>A demonstration of the core styles defined in my personal library.</p>
-        <!-- <li>Typography</li>
-        <li>Buttons</li>
-        <li>Form Elements
-            <ul>
-                <li>Inputs</li>
-                <li>Further Inputs</li>
-            </ul>
-        </li> -->
-    </menu>
 
-    <h1>Colors</h1>
-    <section>
-        <span class="color-block" color="--color-blue"></span>
-        <span class="color-block" color="--color-red"></span>
-        <span class="color-block" color="--color-green"></span>
 
-        <br>
+
+    <details>
+        <summary>
+            <h1>Default Overrides</h1>
+        </summary>
+
+        <p>Scrollbar</p>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Colors</h1>
+        </summary>
+
+        <br><br>
+        <span class="color-block" color="--color-primary"></span>
+        <span class="color-block" color="--color-error"></span>
+        <span class="color-block" color="--color-success"></span>
+
+        <br><br>
         <span class="color-block" color="--color-gray-000" style="border: var(--border-light);"></span>
         <span class="color-block" color="--color-gray-005"></span>
         <span class="color-block" color="--color-gray-010"></span>
@@ -155,10 +213,13 @@
         <span class="color-block" color="--color-gray-080"></span>
         <span class="color-block" color="--color-gray-090"></span>
         <span class="color-block" color="--color-gray-100"></span>
-    </section>
+    </details>
 
-    <h1>Typography</h1>
-    <section>
+    <details>
+        <summary>
+            <h1>Typography</h1>
+        </summary>
+
         <h1 autolabel>Heading 1</h1>
 
         <h2 autolabel>Heading 2</h2>
@@ -173,14 +234,77 @@
             Link
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </a>
-    </section>
 
+        <p class="overflow--ellipsis" style="max-width: 100px;" autolabel>Textoverflow Textoverflow</p>
+    </details>
 
-    <h1>Buttons</h1>
-    <section>
+    <details>
+        <summary>
+            <h1>Lists & Tables</h1>
+        </summary>
+
+        <ol autolabel>
+            <li>Ordered List</li>
+            <li>Ordered List</li>
+        </ol>
+
+        <ul autolabel>
+            <li>Unordered List</li>
+            <li>Unordered List</li>
+        </ul>
+
+        <dl autolabel>
+            <dt>Description lists</dt>
+            <dd>A description list is perfect for defining terms.</dd>
+
+            <dt>Term</dt>
+            <dd>
+                <p>Definition for the term.</p>
+                <p>And some more placeholder definition text.</p>
+            </dd>
+
+            <dt>Another term</dt>
+            <dd>This definition is short, so no extra paragraphs or anything.</dd>
+
+            <dt>Truncated term is truncated</dt>
+            <dd>This can be useful when space is tight. Adds an ellipsis at the end.</dd>
+
+            <dt>Nesting</dt>
+            <dd>
+                <dl>
+                    <dt>Nested definition list</dt>
+                    <dd>I heard you like definition lists. Let me put a definition list inside your
+                        definition list.</dd>
+                </dl>
+            </dd>
+        </dl>
+
+        <table autolabel>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>b</td>
+            </tr>
+            <tr>
+                <td>c</td>
+                <td>d</td>
+            </tr>
+        </table>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Buttons</h1>
+        </summary>
+
         <button autolabel class="btn">Default</button>
 
         <button autolabel class="btn btn--primary">Primary</button>
+
+        <button autolabel class="btn btn--soft">Soft</button>
 
         <button autolabel class="btn btn--ghost">Ghost</button>
 
@@ -210,143 +334,335 @@
         <button autolabel class="btn" disabled>Default</button>
         <button class="btn btn--primary" disabled>Primary</button>
         <button class="btn btn--ghost" disabled>Ghost</button>
-    </section>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Form Elements</h1>
+        </summary>
+
+        <details>
+            <summary>
+                <h2>Basic</h2>
+            </summary>
+
+            <input autolabel placeholder="Default...">
+
+            <input autolabel class="input--ghost" placeholder="Ghost...">
+
+            <input autolabel placeholder="Required..." required>
+
+            <input autolabel class="input--ghost" placeholder="Required Ghost..." required>
+
+            <input autolabel placeholder="Disabled..." disabled>
+        </details>
+
+        <details>
+            <summary>
+                <h2>Input Groups</h2>
+            </summary>
+
+            <input-group autolabel>
+                <input placeholder=' ' required>
+                <label>Labeled Input</label>
+            </input-group>
+
+            <input-group autolabel>
+                <input type="password" placeholder=' ' required>
+                <label>With Button</label>
+                <button class="btn btn--icon btn--ghost">
+                    <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+            </input-group>
+
+            <input-group autolabel>
+                <input placeholder="Input Group..." required>
+                <button class="btn btn--ghost">
+                    Add
+                </button>
+            </input-group>
+
+            <input-group autolabel>
+                <i class="fa-solid fa-location-dot"></i>
+                <input placeholder="With Icon..." disabled>
+            </input-group>
+
+            <input-group autolabel>
+                <p>$</p>
+                <input type="number" placeholder="With Text...">
+                <p>USD</p>
+            </input-group>
+
+            <input-group autolabel>
+                <select>
+                    <option>US</option>
+                    <option>CA</option>
+                    <option>EU</option>
+                </select>
+                <input type="tel" placeholder="With Select...">
+            </input-group>
+
+            <input-group autolabel>
+                <input type="checkbox" checked>
+                <input placeholder="With Checkbox...">
+            </input-group>
+
+            <input-group autolabel>
+                <input type="radio">
+                <input placeholder="With Radio...">
+            </input-group>
+
+            <input-group class="ingroup--rounded" autolabel>
+                <i class="fa-solid fa-location-dot"></i>
+                <input placeholder="Rounded Corners...">
+                <button class="btn btn--icon btn--ghost">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </input-group>
+
+            <input-group class="ingroup--rounded" autolabel>
+                <button class="btn">Left</button>
+                <button class="btn">Right</button>
+            </input-group>
+
+            <input-group class="ingroup--rounded" autolabel>
+                <input placeholder="Input...">
+                <button class="btn">Button</button>
+            </input-group>
+
+            <input-group class="ingroup--rounded" autolabel>
+                <button class="btn">Button</button>
+                <select>
+                    <option>Select A</option>
+                    <option>Select B</option>
+                </select>
+            </input-group>
+        </details>
+
+        <details>
+            <summary>
+                <h2>Time Inputs</h2>
+            </summary>
+
+            <input type="date" autolabel>
+
+            <input type="datetime-local" autolabel>
+
+            <input type="time" autolabel>
+
+            <input type="month" autolabel>
+
+            <input type="week" autolabel>
+        </details>
+
+        <details>
+            <summary>
+                <h2>Text Based Inputs</h2>
+            </summary>
+
+            <input type="url" autolabel>
+
+            <input type="email" autolabel>
+
+            <input type="number" autolabel>
+
+            <input type="search" placeholder="Search..." autolabel>
+
+            <input type="tel" autolabel>
+        </details>
+
+        <details>
+            <summary>
+                <h2>Further Inputs</h2>
+            </summary>
+
+            <input type="color" value="#FF0000" autolabel>
+
+            <input type="image" autolabel>
+
+            <input type="file" autolabel>
+
+            <input type="range" autolabel>
+        </details>
+
+        <details>
+            <summary>
+                <h2>Checkboxes</h2>
+            </summary>
+
+            <label class="checkbox" autolabel>
+                <input type="checkbox" checked>
+                <span></span>
+                Checkbox 1
+            </label>
+            <label class="checkbox">
+                <input type="checkbox">
+                <span></span>
+                Checkbox 2
+            </label>
+
+            <label class="radio" autolabel>
+                <input type="radio" name="radio1" checked>
+                <span></span>
+                Radio 1
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio1">
+                <span></span>
+                Radio 2
+            </label>
+            <label class="radio">
+                <input type="radio" name="radio1">
+                <span></span>
+                Radio 3
+            </label>
+
+            <!-- toggle switches? -->
+        </details>
+
+        <details>
+            <summary>
+                <h2>Select</h2>
+            </summary>
+
+            <select autolabel>
+                <option>Option A</option>
+                <option>Option B</option>
+                <option>Option C</option>
+            </select>
+        </details>
+
+        <details>
+            <summary>
+                <h2>Textarea</h2>
+            </summary>
+
+            <textarea autolabel rows="3">Default...</textarea>
+
+            <textarea autolabel class="textarea--ghost" rows="3">Ghost...</textarea>
+
+            <div contenteditable="plaintext-only" autolabel>Content editable...</div>
+        </details>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Progress Indicators</h1>
+        </summary>
+
+        <progress autolabel></progress>
+
+        <progress value="0.3" autolabel></progress>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Cards</h1>
+        </summary>
+
+        <div class="card" autolabel>
+            <h2>Default Card</h2>
+            <p>Some Text</p>
+        </div>
+
+        <div class="card card--clickable" tabindex="0" autolabel>
+            <h2>Clickable</h2>
+            <p>Some Text</p>
+        </div>
+
+        <div class="card card--shadow" autolabel>
+            <h2>with Shadow</h2>
+            <p>Some Text</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Badges/Tags</h1>
+        </summary>
+
+        <!-- Badges/Tags: Kleine, informative Labels. -->
+    </details>
+
+    <details>
+        <summary>
+            <h1>Navigation</h1>
+        </summary>
+
+        <nav class="navbar" autolabel></nav>
+
+        <!-- Navigation: Navigationsleisten (Navbars), Tabs und Breadcrumbs. -->
+
+        <!-- Offcanvas-Menü (Sidebar-Navigation): Ein Menü, das von der Seite herein- oder herausfährt (besonders nützlich für mobile Ansichten). -->
+    </details>
+
+    <details>
+        <summary>
+            <h1>Alerts</h1>
+        </summary>
+
+        <!-- Alerts/Benachrichtigungen: Boxen, um dem Benutzer Feedback oder Warnungen zu geben. -->
+    </details>
+
+    <details>
+        <summary>
+            <h1>Contextmenu</h1>
+        </summary>
+
+    </details>
+
+    <details>
+        <summary>
+            <h1>Modale Dialoge/Popups</h1>
+        </summary>
+
+    </details>
+
+    <details>
+        <summary>
+            <h1>Accordion</h1>
+        </summary>
+        <!-- Akkordeon (Accordion): Ein ausklappbarer Bereich, ideal für FAQs oder strukturierte Inhaltslisten. -->
+
+        <details>
+            <summary>Default Summary</summary>
+            Default Details
+        </details>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Images</h1>
+        </summary>
+
+        <img src="" alt="" autolabel>
+
+        <figure autolabel>
+            <img src="" alt="">
+            <figcaption>A caption for the above image.</figcaption>
+        </figure>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Lazy Loading Placeholder</h1>
+        </summary>
+    </details>
+
+    <details>
+        <summary>
+            <h1>Utility-Classes</h1>
+        </summary>
+
+        <div class="flex" autolabel></div>
+        <div class="flex-column" autolabel></div>
+
+        <!-- Übergänge (Transitions) & Animationen -->
+    </details>
 
 
-    <h1>Form Elements</h1>
-    <section>
-        <h2>Basic</h2>
-
-        <input autolabel placeholder="Default...">
-
-        <input autolabel class="input--ghost" placeholder="Ghost...">
-
-        <input autolabel placeholder="Required..." required>
-
-        <input autolabel placeholder="Disabled..." disabled>
-    </section>
-
-    <section>
-        <h2>Labeled Inputs</h2>
-
-        <labeled-input autolabel>
-            <input placeholder=' ' required>
-            <label>Labeled Input</label>
-        </labeled-input>
-
-        <labeled-input autolabel>
-            <input type="password" placeholder=' ' required>
-            <label>With Button</label>
-            <button class="btn btn--icon btn--ghost">
-                <i class="fa-solid fa-arrow-right-long"></i>
-            </button>
-        </labeled-input>
-    </section>
-
-    <section>
-        <h2>Time Inputs</h2>
-
-        <input type="date" autolabel>
-
-        <input type="datetime-local" autolabel>
-
-        <input type="time" autolabel>
-
-        <input type="month" autolabel>
-
-        <input type="week" autolabel>
-    </section>
-
-    <section>
-        <h2>Text Based Inputs</h2>
-
-        <input type="url" autolabel>
-
-        <input type="email" autolabel>
-
-        <input type="number" autolabel>
-
-        <input type="search" autolabel>
-
-        <input type="tel" autolabel>
-    </section>
-
-    <section>
-        <h2>Further Inputs</h2>
-
-        <input type="color" value="#FF0000" autolabel>
-
-        <input type="image" autolabel>
-
-        <input type="file" autolabel>
-
-        <input type="range" autolabel>
-    </section>
-
-    <section>
-        <h2>Checkboxes</h2>
-
-        <label class="checkbox" autolabel>
-            <input type="checkbox" checked>
-            <span></span>
-            Checkbox 1
-        </label>
-        <label class="checkbox">
-            <input type="checkbox">
-            <span></span>
-            Checkbox 2
-        </label>
-
-        <label class="radio" autolabel>
-            <input type="radio" name="radio1" checked>
-            <span></span>
-            Radio 1
-        </label>
-        <label class="radio">
-            <input type="radio" name="radio1">
-            <span></span>
-            Radio 2
-        </label>
-        <label class="radio">
-            <input type="radio" name="radio1">
-            <span></span>
-            Radio 3
-        </label>
-    </section>
-
-    <section>
-        <h2>Select</h2>
-
-        <select autolabel>
-            <option>Option A</option>
-            <option>Option B</option>
-            <option>Option C</option>
-        </select>
-    </section>
-
-    <section>
-        <h2>Textarea</h2>
-
-        <textarea autolabel rows="3">Default...</textarea>
-    </section>
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
     <script>
-        // document.querySelectorAll('label.code-label[for]').forEach(label => {
-        //     const elementId = label.getAttribute('for');
-        //     const clonedElement = document.getElementById(elementId).cloneNode(true);
-        //     clonedElement.removeAttribute('id');
-        //     const textContent = clonedElement.hasAttribute('class') ? clonedElement.classList : clonedElement.outerHTML;
-        //     label.textContent = textContent;
-        //     label.addEventListener('click', e => {
-        //         navigator.clipboard.writeText(textContent).then(() => {
-        //             label.classList.add('copy-success');
-        //             setTimeout(() => label.classList.remove('copy-success'), 1500);
-        //         })
-        //     });
-        // });
-
         document.querySelectorAll('.color-block').forEach(colorBlock => {
             const color = colorBlock.getAttribute('color');
             colorBlock.style.backgroundColor = `var(${color})`;
@@ -382,14 +698,112 @@
         });
 
 
+
+        // header js
+        function expandAncestors(node) {
+            let details = node.parentElement.closest('details');
+            while (details) {
+                details.open = true;
+                details = details.parentElement.closest('details');
+            }
+        }
+
+        function performSearch(term) {
+            CSS.highlights.clear();
+            document.querySelectorAll('details').forEach(d => d.open = false);
+            if (!term) return;
+
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+            const ranges = [];
+            const query = term.toLowerCase();
+
+            let node;
+            while (node = walker.nextNode()) {
+                const text = node.textContent.toLowerCase();
+                let start = 0;
+
+                while ((start = text.indexOf(query, start)) !== -1) {
+                    const range = new Range();
+                    range.setStart(node, start);
+                    range.setEnd(node, start + query.length);
+                    ranges.push(range);
+
+                    expandAncestors(node);
+                    start += query.length;
+                }
+            }
+
+            if (ranges.length) {
+                CSS.highlights.set("search-results", new Highlight(...ranges));
+            }
+        }
+        // performSearch('input')
+
+        function performTrueFuzzySearch(term) {
+            CSS.highlights.clear();
+            document.querySelectorAll('details').forEach(d => d.open = false);
+            if (!term) return;
+
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+            const textNodes = [];
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.textContent.trim()) textNodes.push({ node, text: node.textContent });
+            }
+
+            // Initialize Fuse with the text nodes
+            const fuse = new Fuse(textNodes, {
+                keys: ['text'],
+                includeMatches: true,
+                threshold: 0.2, // 0.0 = exact, 1.0 = matches anything
+                ignoreLocation: true // Essential for matching text anywhere in long nodes
+            });
+
+            const results = fuse.search(term);
+            const ranges = [];
+
+            results.forEach(result => {
+                const targetNode = result.item.node;
+                result.matches.forEach(match => {
+                    match.indices.forEach(([start, end]) => {
+                        const range = new Range();
+                        range.setStart(targetNode, start);
+                        range.setEnd(targetNode, end + 1); // Fuse indices are inclusive
+                        ranges.push(range);
+                    });
+                });
+                expandAncestors(targetNode);
+            });
+
+            if (ranges.length) {
+                CSS.highlights.set("search-results", new Highlight(...ranges));
+            }
+        }
+
+        document.querySelector('#search').addEventListener('input', e => {
+            // performTrueFuzzySearch(e.currentTarget.value.trim());
+            performSearch(e.currentTarget.value.trim());
+        });
+
         document.querySelector('#darkmode').addEventListener('click', e => {
             if (document.documentElement.getAttribute('view') === 'dark') {
+                e.currentTarget.title = "Switch to Darkmode";
                 e.currentTarget.innerHTML = '<i class="fa-solid fa-moon"></i>';
                 document.documentElement.setAttribute('view', 'light');
             } else {
+                e.currentTarget.title = "Switch to Lightmode";
                 e.currentTarget.innerHTML = '<i class="fa-solid fa-sun"></i>';
                 document.documentElement.setAttribute('view', 'dark');
             }
+        });
+        // document.querySelector('#darkmode').click();
+
+        document.querySelector('#expand').addEventListener('click', e => {
+            document.querySelectorAll('details').forEach(detail => detail.open = true);
+        });
+
+        document.querySelector('#collapse').addEventListener('click', e => {
+            document.querySelectorAll('details').forEach(detail => detail.open = false);
         });
     </script>
 
