@@ -1,12 +1,16 @@
 .flex,
-.flex-row {
-    gap: var(--space-4);
+.flex-row,
+.flex-col{
+    gap: var(--space-1);
     display: flex;
+    align-items: center;
 }
 
-.flex-col,
-.flex-column {
-    gap: var(--space-4);
-    display: flex;
+.flex-col {
     flex-direction: column;
+}
+
+.flex--center {
+    align-items: center;
+    justify-content: center;
 }
