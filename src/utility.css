@@ -1,0 +1,12 @@
+.flex,
+.flex-row {
+    gap: var(--space-4);
+    display: flex;
+}
+
+.flex-col,
+.flex-column {
+    gap: var(--space-4);
+    display: flex;
+    flex-direction: column;
+}
