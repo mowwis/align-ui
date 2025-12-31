@@ -1,38 +1,32 @@
-@media (prefers-color-scheme: dark) {
-    [view='auto'] :where(input, textarea) {
-        background-color: var(--color-gray-010);
-    }
-}
-
-[view='dark'] :where(input, textarea) {
-    background-color: var(--color-gray-010);
-}
-
-
-
 label {
     color: var(--color-gray-060);
 }
 
+
 select,
 textarea,
-input:not(:where([type="color"], [type="image"], [type="file"], [type="range"], [type="checkbox"], [type="radio"], [type="hidden"])) {
-    display: block;
-    padding: .5em .5em .5em 1.25em;
+input-group,
+input:not(:where([type="color"], [type="image"], [type="range"], [type="checkbox"], [type="radio"], [type="hidden"])) {
     width: min(100%, 300px);
+    display: flex;
+    padding: var(--space-2);
+    align-items: center;
+    padding-left: var(--space-5);
+
+    outline: none;
 
     color: var(--color-gray-100);
     border: var(--border-light);
-    border-radius: var(--border-radius-light);
-    background-color: var(--color-gray-000);
+    border-radius: var(--radius-sm);
+    background-color: light-dark(var(--color-gray-000), var(--color-gray-010));
 
-    font-size: 1rem;
+    font-size: var(--fs-300);
 
-    &:is(:hover, :focus-within):not(:disabled) {
+    &:is(:hover, :focus-within):not(:disabled, :has(:disabled)) {
         border-color: var(--color-gray-100);
     }
 
-    &:focus-within {
+    &:focus-within:not(.input--ghost, .textarea--ghost) {
         box-shadow: inset 0 0 0 1px var(--color-gray-100);
     }
 
@@ -41,46 +35,71 @@ input:not(:where([type="color"], [type="image"], [type="file"], [type="range"], 
     }
 }
 
-input {
-    outline: none;
-    font-weight: 500;
-
-    &::placeholder {
-        color: var(--color-gray-060);
-        font-weight: normal;
-    }
-
-    &:user-invalid:is(:hover, :not(:hover)) {
-        border-color: var(--color-red);
-        box-shadow: inset 0 0 0 1px var(--color-red);
-    }
-}
-
-
-:is(.input--ghost, input[type="color"]):focus-visible {
-    outline-offset: 2px;
-    outline: 2px solid var(--color-blue);
-}
-
-
+input-group :is(input, select),
 .input--ghost,
-.input--ghost:is(:hover, :focus-within) {
+.textarea--ghost {
     border: none;
-    padding: .5em;
-    box-shadow: none;
+    padding: var(--space-2);
+    box-shadow: none !important;
     background-color: transparent;
 }
 
+::placeholder {
+    color: var(--color-gray-060);
+    font-weight: normal;
+}
+
+:is(.input--ghost, .textarea--ghost, input[type="color"], select):is(:focus-visible, :user-invalid) {
+    outline-offset: 2px;
+    outline: 2px solid var(--color-primary);
+}
+
+:is(input:user-invalid, input-group:has(:user-invalid)):is(:hover, :not(:hover)) {
+    box-shadow: inset 0 0 0 1px var(--color-error);
+    border-color: var(--color-error);
+    outline-color: var(--color-error);
+}
+
+
+
+/* input */
+input {
+    outline: none;
+    font-weight: 500;
+}
+
 input[type="password"] {
-    line-height: 19px;
+    line-height: 1.1875;
     font-family: 'pass', caption, Helvetica, Arial, sans-serif;
 }
 
+input[type="search"] {
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        width: var(--space-8);
+        height: var(--space-8);
+        cursor: pointer;
+        border-radius: var(--radius-full);
+        background:
+            radial-gradient(circle, transparent 27%, light-dark(var(--color-gray-000), var(--color-gray-005)) 27%),
+            linear-gradient(45deg, transparent 48%, var(--color-gray-060) 48%, var(--color-gray-060) 52%, transparent 52%),
+            linear-gradient(135deg, transparent 48%, var(--color-gray-060) 48%, var(--color-gray-060) 52%, transparent 52%);
+    }
+
+    &::-webkit-search-cancel-button:hover {
+        background:
+            radial-gradient(circle, transparent 27%, light-dark(var(--color-gray-005), var(--color-gray-020)) 27%),
+            linear-gradient(45deg, transparent 48%, var(--color-gray-060) 48%, var(--color-gray-060) 52%, transparent 52%),
+            linear-gradient(135deg, transparent 48%, var(--color-gray-060) 48%, var(--color-gray-060) 52%, transparent 52%),
+            light-dark(var(--color-gray-005), var(--color-gray-020));
+    }
+}
+
 input[type="color"] {
-    width: 2.5em;
-    height: 2.5em;
+    width: var(--space-10);
+    height: var(--space-10);
     border: none;
-    border-radius: var(--border-radius-light);
+    border-radius: var(--radius-sm);
 }
 
 ::-webkit-color-swatch,
@@ -96,15 +115,77 @@ input[type="color"] {
     padding: 0;
 }
 
-labeled-input {
-    display: flex;
-    position: relative;
-    max-width: 300px;
-    align-items: center;
 
+/* select */
+select {
+    appearance: none;
+    padding-right: var(--space-7);
+    background-size: var(--space-3);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23999999' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--space-2) center;
+
+    option {
+        background-color: var(--color-gray-000);
+    }
+}
+
+
+/* textarea */
+textarea {
+    resize: none;
+}
+
+
+/* input group */
+input-group {
+    padding: unset;
+    position: relative;
+
+    input:is(:hover, :not(:hover)) {
+        flex-grow: 1;
+
+        &:first-child {
+            padding-left: var(--space-5);
+        }
+    }
+
+    >:not(.btn--icon) {
+        border-radius: unset !important;
+
+        &:first-child {
+            border-top-left-radius: var(--radius-sm) !important;
+            border-bottom-left-radius: var(--radius-sm) !important;
+        }
+
+        &:last-child {
+            border-top-right-radius: var(--radius-sm) !important;
+            border-bottom-right-radius: var(--radius-sm) !important;
+        }
+    }
+
+    &:not(:has(input, select)) {
+        width: fit-content;
+    }
+
+    >i,
+    >p {
+        margin-inline: var(--space-3);
+        text-align: center;
+    }
+
+    &:has(input:focus-within) {
+        box-shadow: inset 0 0 0 1px var(--color-gray-100);
+    }
+
+    &:has(:disabled) {
+        cursor: not-allowed;
+    }
+}
+
+input-group:has(label) {
     input {
-        width: 100%;
-        padding-top: 1.3em;
+        padding-top: var(--space-5);
     }
 
     &:has(button) input {
@@ -116,11 +197,11 @@ labeled-input {
     }
 
     &:has(input:is(:focus, :not(:placeholder-shown)):user-invalid) label {
-        color: var(--color-red);
+        color: var(--color-error);
     }
 
     label {
-        left: 1.25em;
+        left: var(--space-5);
         position: absolute;
         pointer-events: none;
         transform-origin: 0 50%;
@@ -128,20 +209,38 @@ labeled-input {
     }
 
     button {
-        right: .5em;
+        right: var(--space-2);
         position: absolute;
     }
 }
 
+input-group.ingroup--rounded {
+    border-radius: var(--radius-full);
+
+    >:not(.btn--icon) {
+        &:first-child {
+            border-top-left-radius: var(--radius-full) !important;
+            border-bottom-left-radius: var(--radius-full) !important;
+        }
+
+        &:last-child {
+            border-top-right-radius: var(--radius-full) !important;
+            border-bottom-right-radius: var(--radius-full) !important;
+        }
+    }
+}
+
+
+/* checkbox */
 .radio,
 .checkbox {
-    gap: .5em;
+    gap: var(--space-2);
     cursor: pointer;
     display: inline-flex;
     position: relative;
     user-select: none;
     align-items: center;
-    padding-right: .5em;
+    padding-right: var(--space-2);
 
     input {
         opacity: 0;
@@ -151,12 +250,12 @@ labeled-input {
 
     &:has(input:focus-visible) span {
         outline-offset: 2px;
-        outline: 2px solid var(--color-blue);
+        outline: 2px solid var(--color-primary);
     }
 
     &:hover span:after {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: var(--space-6);
+        height: var(--space-6);
         content: '';
         z-index: -1;
         position: absolute;
@@ -170,7 +269,7 @@ labeled-input {
         position: relative;
         align-items: center;
         font-family: "Font Awesome 6 Free";
-        border-radius: var(--border-radius-light);
+        border-radius: var(--radius-sm);
         justify-content: center;
     }
 }
@@ -193,9 +292,4 @@ labeled-input {
 .checkbox:has(input:checked) span::before {
     content: "\f14a";
     font-weight: 900;
-}
-
-
-textarea {
-    resize: none;
 }
