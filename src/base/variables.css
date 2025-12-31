@@ -1,72 +1,64 @@
 :host,
 :root {
-    --color-red: #b3261e;
-    --color-blue: #4f80ff;
-    --color-green: #00ff00;
+    color-scheme: light dark;
 
-    --color-gray-000: hsl(0, 0%, 100%);
-    --color-gray-005: hsl(0, 0%, 95%);
-    --color-gray-010: hsl(0, 0%, 90%);
-    --color-gray-020: hsl(0, 0%, 80%);
-    --color-gray-030: hsl(0, 0%, 70%);
-    --color-gray-040: hsl(0, 0%, 60%);
-    --color-gray-050: hsl(0, 0%, 50%);
-    --color-gray-060: hsl(0, 0%, 40%);
-    --color-gray-070: hsl(0, 0%, 30%);
-    --color-gray-080: hsl(0, 0%, 20%);
-    --color-gray-090: hsl(0, 0%, 10%);
-    --color-gray-100: hsl(0, 0%, 0%);
+    --color-error: light-dark(#ed1c24, #eea19c);
+    --color-primary: #4f80ff;
+    --color-success: #8cc63f;
+
+    --color-gray-000: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 0%));
+    --color-gray-005: light-dark(hsl(0, 0%, 95%), hsl(0, 0%, 20%));
+    --color-gray-010: light-dark(hsl(0, 0%, 90%), hsl(0, 0%, 20%));
+    --color-gray-020: light-dark(hsl(0, 0%, 80%), hsl(0, 0%, 40%));
+    --color-gray-030: light-dark(hsl(0, 0%, 70%), hsl(0, 0%, 70%));
+    --color-gray-040: light-dark(hsl(0, 0%, 60%), hsl(0, 0%, 70%));
+    --color-gray-050: light-dark(hsl(0, 0%, 50%), hsl(0, 0%, 70%));
+    --color-gray-060: light-dark(hsl(0, 0%, 40%), hsl(0, 0%, 70%));
+    --color-gray-070: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 80%));
+    --color-gray-080: light-dark(hsl(0, 0%, 20%), hsl(0, 0%, 90%));
+    --color-gray-090: light-dark(hsl(0, 0%, 10%), hsl(0, 0%, 95%));
+    --color-gray-100: light-dark(hsl(0, 0%, 0%), hsl(0, 0%, 100%));
 
 
     --border-light: 1px solid var(--color-gray-040);
     --shadow-light: 0px 2px 5px 0px rgba(0, 0, 0, 0.41);
     /* --shadow-medium: */
 
-    --border-radius-light: .3em;
+    --space-1: .25em;
+    --space-2: .5em;
+    --space-3: .75em;
+    --space-4: 1em;
+    --space-5: 1.25em;
+    --space-6: 1.5em;
+    --space-7: 1.75em;
+    --space-8: 2em;
+    --space-10: 2.5em;
+
+    --fs-100: 0.75rem;
+    --fs-200: 0.875rem;
+    --fs-300: 1rem;
+    --fs-400: 1.125rem;
+    --fs-500: 1.25rem;
+    --fs-600: 1.5rem;
+    --fs-700: 2rem;
+    --fs-800: 3rem;
+
+    --radius-sm: 0.3rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 2rem;
+    --radius-full: 9999px;
+
+    /* --border-radius-light: .3em;
     --border-radius-medium: 1em;
     --border-radius-strong: 100vw;
-    --border-radius-circle: 50%;
+    --border-radius-circle: 50%; */
 }
 
-@media (prefers-color-scheme: dark) {
-
-    [view='auto'],
-    [view='auto']:root {
-        --color-red: #eea19c;
-
-        --color-gray-000: hsl(0, 0%, 0%);
-        --color-gray-005: hsl(0, 0%, 20%);
-        --color-gray-010: hsl(0, 0%, 20%);
-        --color-gray-020: hsl(0, 0%, 40%);
-        --color-gray-030: hsl(0, 0%, 70%);
-        --color-gray-040: hsl(0, 0%, 70%);
-        --color-gray-050: hsl(0, 0%, 70%);
-        --color-gray-060: hsl(0, 0%, 70%);
-        --color-gray-070: hsl(0, 0%, 80%);
-        --color-gray-080: hsl(0, 0%, 90%);
-        --color-gray-090: hsl(0, 0%, 95%);
-        --color-gray-100: hsl(0, 0%, 100%);
-
-        color-scheme: dark;
-    }
-}
-
-[view='dark'],
-[view='dark']:root {
-    --color-red: #eea19c;
-
-    --color-gray-000: hsl(0, 0%, 0%);
-    --color-gray-005: hsl(0, 0%, 20%);
-    --color-gray-010: hsl(0, 0%, 20%);
-    --color-gray-020: hsl(0, 0%, 40%);
-    --color-gray-030: hsl(0, 0%, 70%);
-    --color-gray-040: hsl(0, 0%, 70%);
-    --color-gray-050: hsl(0, 0%, 70%);
-    --color-gray-060: hsl(0, 0%, 70%);
-    --color-gray-070: hsl(0, 0%, 80%);
-    --color-gray-080: hsl(0, 0%, 90%);
-    --color-gray-090: hsl(0, 0%, 95%);
-    --color-gray-100: hsl(0, 0%, 100%);
-
+[view='dark'] {
     color-scheme: dark;
+}
+
+[view='light'] {
+    color-scheme: light;
 }

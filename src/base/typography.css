@@ -10,7 +10,7 @@
 
 body {
     color: var(--color-gray-100);
-    font-size: 1rem;
+    font-size: var(--fs-300);
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
@@ -24,22 +24,22 @@ h3 {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: var(--fs-700);
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: var(--fs-600);
 }
 
 a {
-    gap: .5em;
+    gap: var(--space-2);
     display: inline-flex;
     font-weight: 500;
     align-items: baseline;
     justify-content: center;
 
     cursor: pointer;
-    color: var(--color-blue);
+    color: var(--color-primary);
 
     &:hover {
         text-decoration: underline;
