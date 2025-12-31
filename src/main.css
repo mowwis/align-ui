@@ -2,16 +2,22 @@
 @import 'base/variables.css';
 @import 'base/typography.css';
 
+@import 'components/card.css';
 @import 'components/form.css';
 @import 'components/button.css';
+
+@import 'utility.css';
+
+:root,
+:host {
+    interpolate-size: allow-keywords;
+}
 
 body {
     min-height: 100vh;
     min-height: 100dvh;
 
     background-color: var(--color-gray-000);
-
-    interpolate-size: allow-keywords;
 }
 
 
@@ -21,18 +27,58 @@ hr {
 }
 
 
-/* 
 
-TO ADD:
 
-.text-overflow-ellipsis
+:is(ul, ol) {
+    padding-left: var(--space-8);
+}
 
-image styling
+table {
+    th {
+        font-weight: bold;
+    }
+}
 
-toggle switches?
 
-custom scrollbar
+details {
+    /* background-color: aqua; */
 
-progress 
+    &::details-content {
+        overflow: hidden;
+        /* background-color: red; */
 
-*/
+        padding-left: var(--space-8);
+
+        block-size: 0;
+        transition:
+            block-size .3s,
+            padding-block .3s,
+            content-visibility .3s;
+        transition-behavior: allow-discrete;
+    }
+
+    &[open]::details-content {
+        overflow: visible;
+        block-size: auto;
+        transition:
+            block-size .3s,
+            overflow 0s .3s,
+            padding-block .3s,
+            content-visibility .3s;
+        transition-behavior: allow-discrete;
+    }
+}
+
+
+
+summary {
+    cursor: pointer;
+    margin-left: var(--space-8);
+    user-select: none;
+    list-style-position: outside;
+
+    &::marker {
+        /* font-size: .75em; */
+        /* color: ; */
+    }
+}
