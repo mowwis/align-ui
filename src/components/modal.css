@@ -1,0 +1,43 @@
+:modal {
+    margin: auto;
+    border: var(--border-light);
+    padding: var(--space-7);
+    box-shadow: var(--shadow-light);
+    border-radius: var(--radius-lg);
+    border-color: light-dark(transparent, var(--color-gray-040));
+
+    opacity: 1;
+    transform: scale(1);
+    transition:
+        opacity .15s cubic-bezier(.4, 0, .2, 1),
+        transform .15s cubic-bezier(.4, 0, .2, 1),
+        display .15s allow-discrete,
+        overlay .15s allow-discrete;
+}
+
+@starting-style {
+    :modal {
+        opacity: 0;
+        transform: scale(.95);
+    }
+}
+
+::backdrop {
+    transition:
+        backdrop-filter .15s cubic-bezier(.4, 0, .2, 1),
+        background-color .15s cubic-bezier(.4, 0, .2, 1),
+        display .15s allow-discrete,
+        overlay .15s allow-discrete;
+}
+
+[open]::backdrop {
+    backdrop-filter: blur(3px);
+    background-color: light-dark(hsla(0, 0%, 95%, 0.3), hsla(0, 0%, 95%, 0.1));
+}
+
+@starting-style {
+    [open]::backdrop {
+        backdrop-filter: blur(0px);
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
