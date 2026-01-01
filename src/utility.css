@@ -1,6 +1,4 @@
-.flex,
-.flex-row,
-.flex-col{
+:where(.flex, .flex-row, .flex-col) {
     gap: var(--space-1);
     display: flex;
 }
