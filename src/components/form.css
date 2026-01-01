@@ -1,6 +1,6 @@
-label {
+/* label {
     color: var(--color-gray-060);
-}
+} */
 
 
 select,
@@ -202,10 +202,11 @@ input-group:has(label) {
 
     label {
         left: var(--space-5);
+        color: var(--color-gray-060);
         position: absolute;
+        transition: top .15s cubic-bezier(.4, 0, .2, 1), transform .15s cubic-bezier(.4, 0, .2, 1);
         pointer-events: none;
         transform-origin: 0 50%;
-        transition: top .15s cubic-bezier(.4, 0, .2, 1), transform .15s cubic-bezier(.4, 0, .2, 1);
     }
 
     button {
