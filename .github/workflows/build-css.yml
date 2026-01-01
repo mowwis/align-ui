@@ -1,0 +1,38 @@
+name: Build and Minify CSS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install esbuild
+        run: npm install --save-exact esbuild
+
+      - name: Bundle and Minify CSS
+        run: |
+          mkdir -p dist
+          npx esbuild src/main.css --bundle --minify --outfile=dist/align.min.css
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-bundle css [skip ci]"
+          file_pattern: 'dist/align.min.css'
