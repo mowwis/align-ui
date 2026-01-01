@@ -5,11 +5,14 @@ The goal of Align is to provide a standardized set of reusable components and st
 
 # Installation
 ```html
-<!-- Latest release -->
-<link rel="stylesheet" href="https://github.com/mowwis/align-ui/releases/latest/download/align.min.css">
+<!-- jsDelivr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mowwis/align-ui@latest/dist/align.min.css">
 
-<!-- Specific version -->
-<link rel="stylesheet" href="https://github.com/mowwis/align-ui/releases/download/v1.0.0/align.min.css">
+<!-- GitHub Pages -->
+<link rel="stylesheet" href="https://mowwis.github.io/align-ui/dist/align.min.css">
+
+<!-- GitHub Pages (unbundled) -->
+<link rel="stylesheet" href="https://mowwis.github.io/align-ui/src/main.css">
 ```
 
 # Examples
