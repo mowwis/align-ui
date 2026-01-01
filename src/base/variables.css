@@ -1,6 +1,6 @@
 :host,
 :root {
-    color-scheme: light dark;
+    color-scheme: inherit;
 
     --color-error: light-dark(#ed1c24, #eea19c);
     --color-primary: #4f80ff;
@@ -61,4 +61,8 @@
 
 [view='light'] {
     color-scheme: light;
+}
+
+[view='auto'] {
+    color-scheme: light dark;
 }
