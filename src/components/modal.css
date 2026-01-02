@@ -43,7 +43,7 @@
 }
 
 
-[popover] {
+[popover]:not(.contextmenu) {
     border: none;
 
     &:not(:popover-open) {
