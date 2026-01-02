@@ -2,14 +2,15 @@
 @import 'base/variables.css';
 @import 'base/typography.css';
 
-@import 'components/card.css';
-@import 'components/form.css';
-@import 'components/button.css';
+@import 'utility.css';
+
 @import 'components/contextmenu.css';
+@import 'components/card.css';
+@import 'components/button.css';
+@import 'components/form.css';
 @import 'components/tooltip.css';
 @import 'components/modal.css';
 
-@import 'utility.css';
 
 :root,
 :host {
