@@ -1,9 +1,8 @@
-name: Build and Minify CSS
+name: Production Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
     paths:
       - 'src/**'
 
@@ -11,28 +10,32 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  bundle-and-minify:
+    name: Bundle & Minify CSS
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          # cache: 'npm'
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: '.github/workflows/*.yml'
 
-      - name: Install esbuild
-        run: npm install --save-exact esbuild
+      # - name: Install esbuild
+      #   run: npm install --save-exact esbuild
 
-      - name: Bundle and Minify CSS
+      - name: Generate Distribution Files
         run: |
           mkdir -p dist
+          npx esbuild src/main.css --bundle --outfile=dist/align.css
           npx esbuild src/main.css --bundle --minify --outfile=dist/align.min.css
 
-      - name: Commit and Push Changes
+      - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: auto-bundle css [skip ci]"
-          file_pattern: 'dist/align.min.css'
+          commit_message: "build: auto-bundle and minify [skip ci]"
+          file_pattern: 'dist/*'
