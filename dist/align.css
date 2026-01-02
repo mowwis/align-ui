@@ -566,7 +566,7 @@ input-group.ingroup--rounded {
     background-color: rgba(0, 0, 0, 0);
   }
 }
-[popover] {
+[popover]:not(.contextmenu) {
   border: none;
   &:not(:popover-open) {
     display: none;
