@@ -1,9 +1,9 @@
-.card {
+:where(.card) {
     border: var(--border-light);
     /* display: flex; */
     padding: var(--space-2) var(--space-4);
     /* flex-direction: column; */
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
 }
 
 .card--shadow {
