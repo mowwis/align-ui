@@ -41,3 +41,12 @@
         background-color: rgba(0, 0, 0, 0);
     }
 }
+
+
+:where([popover]) {
+    border: none;
+
+    &:not(:popover-open) {
+        display: none;
+    }
+}
