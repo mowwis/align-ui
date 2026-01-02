@@ -25,9 +25,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '.github/workflows/*.yml'
 
-      # - name: Install esbuild
-      #   run: npm install --save-exact esbuild
-
       - name: Generate Distribution Files
         run: |
           mkdir -p dist

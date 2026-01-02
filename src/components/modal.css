@@ -43,7 +43,7 @@
 }
 
 
-:where([popover]) {
+[popover] {
     border: none;
 
     &:not(:popover-open) {
