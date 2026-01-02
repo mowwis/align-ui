@@ -1,0 +1,21 @@
+.tooltip {
+    position-try: flip-block;
+    position-area: bottom;
+    pointer-events: none;
+
+    color: var(--color-gray-000);
+    border: none;
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--fs-100);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-gray-100);
+
+    opacity: 1;
+    transition: opacity 0s .5s;
+}
+
+@starting-style {
+    .tooltip {
+        opacity: 0;
+    }
+}
